@@ -104,11 +104,11 @@
           this.courses.splice(i);
         }
       }
-      for (var j = 0; j < this.assignments.length; j++) {
+      /* for (var j = 0; j < this.assignments.length; j++) {
         if (this.assignments[j].course == currentSubject) {
           this.assignments.splice(j);
         }
-      }
+      } */
     }
   </script>
 </hwplanner>
