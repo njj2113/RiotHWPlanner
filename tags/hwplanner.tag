@@ -3,7 +3,7 @@
   <p style="margin-bottom: -4px">MENU</p>
   <div id="menu">
     <form>
-      <input type="text" ref="courseName" placeholder="Subject Name" required="required">
+      <input type="text" ref="courseName" placeholder="Course Name" required="required">
       <select ref="courseColor" required="required">
         <option selected="selected" disabled="disabled" hidden="hidden">Select a color</option>
         <option value="#f5f5f5">White</option>
