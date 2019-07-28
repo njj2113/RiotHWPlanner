@@ -2,7 +2,7 @@
   <div style="background-color: { item.color }">
     <label for="assignment">
       <input type="checkbox" ref="assignmentItem" onchange={ toggleCompletion }>
-      <span class={ complete: done }>{ item.title } for { item.subject }, due { item.due }</span>
+      <span class={ complete: done }>{ item.title } for { item.course }, due { item.due }</span>
       <button type="button" name="addSubgoal" onclick={ addSubgoal } show={ !done }>+</button>
       <button type="button" name="removeAssignment" onclick={ removeAssignment }>x</button>
     </label>
@@ -32,7 +32,7 @@
     }
     this.removeAssignment = function(event){
       for (var i = 0; i < this.parent.assignments.length; i++) {
-        if (this.parent.assignments[i].subject == this.item.subject && this.parent.assignments[i].title == this.item.title) {
+        if (this.parent.assignments[i].course == this.item.course && this.parent.assignments[i].title == this.item.title) {
           this.parent.assignments.splice(i, 1);
         }
       }
