@@ -14,8 +14,8 @@
   </div>
   <style>
     form, div {
-      margin-left: 5%;
-      font-size: 12px;
+      margin-left: 3%;
+      font-size: 14px;
       border: 0px !important;
     }
 

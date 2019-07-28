@@ -41,7 +41,6 @@
   <script>
     this.courses = [];
     this.assignments = [];
-    this.refs.courseName.value = "";
 
     this.addSubject = function(event){
       var newSubject = {
@@ -49,6 +48,7 @@
         color: this.refs.courseColor.value
       }
       this.courses.push(newSubject);
+      this.refs.courseName.value = "";
     }
 
     this.addAssignment = function(event){
@@ -64,6 +64,7 @@
         }
       }
       this.assignments.push(newAssignment);
+      this.refs.assignmentName.value = "";
     }
 
     this.sortByDate = function(event){
