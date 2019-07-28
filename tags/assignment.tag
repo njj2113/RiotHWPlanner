@@ -10,7 +10,6 @@
   </div>
   <style>
     div {
-      max-width: 75%;
       border-radius: 3px;
       border: 1px solid gray;
     }
