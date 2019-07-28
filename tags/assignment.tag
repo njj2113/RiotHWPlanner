@@ -21,9 +21,6 @@
     }
   </style>
   <script>
-    this.on('mount', function() {
-      console.log(this.parent.assignments);
-    })
     this.done = false;
     this.subgoals = [];
     this.addSubgoal = function(event){
@@ -34,12 +31,12 @@
       this.done = !this.done;
     }
     this.removeAssignment = function(event){
-      this.unmount();
       for (var i = 0; i < this.parent.assignments.length; i++) {
-        if (this.parent.assignments[i].subject == this.subject && this.parent.assignments[i].title == this.title) {
+        if (this.parent.assignments[i].subject == this.item.subject && this.parent.assignments[i].title == this.item.title) {
           this.parent.assignments.splice(i, 1);
         }
       }
+      this.unmount();
     }
   </script>
 </assignment>
