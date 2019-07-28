@@ -7,6 +7,10 @@
       <option value="#f5f5f5">White</option>
       <option value="#ed7474">Red</option>
       <option value="#7498ed">Blue</option>
+      <option value="#ecfc03">Yellow</option>
+     <option value="#c603fc">Purple</option>
+     <option value="#fc9003">Orange</option>
+     <option value="#41b064">Green</option>
     </select>
     <button type="button" name="confirmSubject" onclick={ addSubject }>Add</button>
   </form>
@@ -91,9 +95,15 @@
     }
 
     this.deleteSubject = function(event){
+      var currentSubject = this.refs.subjectSelect.value;
       for (var i = 0; i < this.subjects.length; i++) {
-        if (this.subjects[i].name == this.refs.subjectSelect.value) {
-          this.subjects.splice(i, 1);
+        if (this.subjects[i].name == currentSubject) {
+          this.subjects.splice(i);
+        }
+      }
+      for (var j = 0; j < this.assignments.length; j++) {
+        if (this.assignments[j].subject == currentSubject) {
+          this.assignments.splace(j);
         }
       }
     }
