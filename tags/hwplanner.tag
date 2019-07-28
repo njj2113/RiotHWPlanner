@@ -10,7 +10,8 @@
     </select>
     <button type="button" name="confirmSubject" onclick={ addSubject }>Add</button>
   </form>
-  
+
+  <!-- Add assignment -->
   <form if={ subjects.length > 0 }>
     <select ref="subjectSelect">
       <option each={ item in subjects }>{ item.name }</option>
@@ -18,10 +19,13 @@
     <input type="text" ref="assignmentName" placeholder="Assignment">
     <input type="date" ref="assignmentDate">
     <button type="button" name="confirmAssignment" onclick={ addAssignment }>Add</button>
+    <button type="button" name="deleteSubject" onclick={ deleteSubject }>Delete selected subject</button>
   </form>
 
+  <!-- Sorting options -->
   <button type="button" name="sortByDate" onclick={ sortByDate } if={ assignments.length > 1}>Sort by due date</button>
   <button type="button" name="sortByClass" onclick={ sortByClass } if={ assignments.length > 1}>Sort by class</button>
+
   <assignment each={ item in assignments }></assignment>
   <style>
     :scope {
@@ -32,6 +36,7 @@
   <script>
     this.subjects = [];
     this.assignments = [];
+
     this.addSubject = function(event){
       var newSubject = {
         name: this.refs.subjectName.value,
@@ -39,6 +44,7 @@
       }
       this.subjects.push(newSubject);
     }
+
     this.addAssignment = function(event){
       var newAssignment = {
         subject: this.refs.subjectSelect.value,
@@ -53,6 +59,7 @@
       }
       this.assignments.push(newAssignment);
     }
+
     this.sortByDate = function(event){
       function compare(a, b){
         const dateA = a.due;
@@ -67,6 +74,7 @@
       }
       this.assignments.sort(compare);
     }
+
     this.sortByClass = function(event){
       function compare(a, b){
         const classA = a.subject;
@@ -80,6 +88,14 @@
         return comparison;
       }
       this.assignments.sort(compare);
+    }
+
+    this.deleteSubject = function(event){
+      for (var i = 0; i < this.subjects.length; i++) {
+        if (this.subjects[i].name == this.refs.subjectSelect.value) {
+          this.subjects.splice(i, 1);
+        }
+      }
     }
   </script>
 </hwplanner>
