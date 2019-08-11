@@ -34,7 +34,7 @@
       this.subgoalText = this.refs.subgoalInput.value;
       this.subgoalDue = this.refs.subgoalDate.value;
       //this.publishable = true;
-      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, publishable: this.publishable }, {merge: true});
+      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, publishable: true }, {merge: true});
     }
 
     this.removeSubgoal = function(event){
