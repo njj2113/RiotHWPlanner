@@ -29,13 +29,12 @@
     var assignmentsRef = db.collection('assignments');
     var subgoalsRef = assignmentsRef.doc(this.parent.item.id).collection('subgoals');
     var currentSubgoal = this.item.id;
-    this.subgoalPublishable = false;
+    subgoalsRef.doc(currentSubgoal).set({ publishable: false }, {merge: true});
 
     this.saveSubgoal = function(event){
       this.subgoalText = this.refs.subgoalInput.value;
       this.subgoalDue = this.refs.subgoalDate.value;
-      this.subgoalPublishable = true;
-      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, publishable: this.subgoalPublishable }, {merge: true});
+      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, publishable: true }, {merge: true});
     }
 
     this.removeSubgoal = function(event){
