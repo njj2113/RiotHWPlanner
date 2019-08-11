@@ -1,11 +1,11 @@
 <subgoal>
-  <form if={ 1==1 } class="subgoalEntry">
+  <form if={ 1==2 } class="subgoalEntry">
     <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
     <input type="text" ref="subgoalInput">
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div if={ 1==2 } class={ complete: item.done }>
+  <div if={ 1==1 } class={ complete: item.done }>
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
