@@ -21,6 +21,7 @@
     }
   </style>
   <script>
+
     var assignmentsRef = firebase.firestore().collection('assignments');
     this.done = false;
     this.subgoals = [];
