@@ -33,7 +33,8 @@
     this.saveSubgoal = function(event){
       this.subgoalText = this.refs.subgoalInput.value;
       this.subgoalDue = this.refs.subgoalDate.value;
-      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, tacked: true; }, {merge: true});
+      this.tacked = true;
+      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, tacked: this.tacked; }, {merge: true});
     }
 
     this.removeSubgoal = function(event){
