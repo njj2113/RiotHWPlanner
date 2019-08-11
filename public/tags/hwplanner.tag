@@ -44,14 +44,38 @@
   <script>
     this.courses = [];
     this.assignments = [];
+    var db = firebase.firestore();
+    var coursesRef = db.collection('courses');
+    var assignmentsRef = db.collection('assignments');
+    var that = this;
+
+    coursesRef.onSnapshot(function(snapshot){
+      var courses = [];
+      snapshot.forEach(function(doc){
+        courses.push(doc.data());
+      })
+      that.courses = courses;
+      that.update();
+    })
+
+    assignmentsRef.onSnapshot(function(snapshot){
+      var assignments = [];
+      snapshot.forEach(function(doc){
+        assignments.push(doc.data());
+      })
+      that.assignments = assignments;
+      that.update();
+    })
 
     this.addSubject = function (event) {
       var newSubject = {
         name: this.refs.courseName.value,
         color: this.refs.courseColor.value
       }
-      this.courses.push(newSubject);
+      var subjectRef = coursesRef.doc(newSubject.name);
+      subjectRef.set(newSubject);
       this.refs.courseName.value = "";
+      this.refs.courseName.focus();
     }
 
     this.addAssignment = function (event) {
@@ -59,15 +83,20 @@
         course: this.refs.courseSelect.value,
         title: this.refs.assignmentName.value,
         due: this.refs.assignmentDate.value,
-        color: undefined
+        color: undefined,
+        done: false,
+        id: ""
       }
       for (var i = 0; i < this.courses.length; i++) {
         if (this.courses[i].name == newAssignment.course) {
           newAssignment.color = this.courses[i].color;
         }
       }
-      this.assignments.push(newAssignment);
+      var newKey = assignmentsRef.doc().id;
+      newAssignment.id = newKey;
+      assignmentsRef.doc(newKey).set(newAssignment);
       this.refs.assignmentName.value = "";
+      this.refs.assignmentName.focus();
     }
 
     this.sortByDate = function (event) {
@@ -102,16 +131,20 @@
 
     this.deleteSubject = function (event) {
       var currentSubject = this.refs.courseSelect.value;
-      for (var i = 0; i < this.courses.length; i++) {
-        if (this.courses[i].name == currentSubject) {
-          this.courses.splice(i);
+      for (var i = 0; i < this.assignments.length; i++) {
+        if (this.assignments[i].course == currentSubject) {
+          assignmentsRef.doc(this.assignments[i].id).delete().then(function(){
+            console.log("Deleted assignment");
+          }).catch(function(error){
+            console.error("Error removing assignment: ", error);
+          });
         }
       }
-      /* for (var j = 0; j < this.assignments.length; j++) {
-        if (this.assignments[j].course == currentSubject) {
-          this.assignments.splice(j);
-        }
-      } */
+      coursesRef.doc(currentSubject).delete().then(function(){
+        console.log("Deleted subject");
+      }).catch(function(error){
+        console.error("Error removing subject: ", error);
+      });
     }
   </script>
 </hwplanner>
