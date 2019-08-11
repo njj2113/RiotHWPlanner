@@ -1,11 +1,11 @@
 <subgoal>
-  <form if={ this.subgoalText!="" } class="subgoalEntry">
+  <form if={ !editing } class="subgoalEntry">
     <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
     <input type="text" ref="subgoalInput">
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div if={ this.subgoalText=="" } class={ complete: item.done }>
+  <div if={ editing } class={ complete: item.done }>
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
@@ -25,6 +25,7 @@
     }
   </style>
   <script>
+    var editing = false;
     var db = firebase.firestore();
     var assignmentsRef = db.collection('assignments');
     var subgoalsRef = assignmentsRef.doc(this.parent.item.id).collection('subgoals');
