@@ -1,5 +1,5 @@
 <subgoal>
-  <form if={ !tacked } class="subgoalEntry">
+  <form class="subgoalEntry">
     <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
     <input type="text" ref="subgoalInput">
     <input type="date" ref="subgoalDate">
