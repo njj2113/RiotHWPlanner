@@ -5,7 +5,7 @@
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div if={ subgoalText } class={ complete: item.done }>
+  <div if={ !subgoalText } class={ complete: item.done }>
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
