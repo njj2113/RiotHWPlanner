@@ -16,7 +16,7 @@
     form, div {
       margin-left: 3%;
       font-size: 14px;
-      border: 0px !important;
+      border: 1px !important;
     }
 
     .complete {
