@@ -21,7 +21,6 @@
     }
   </style>
   <script>
-
     var assignmentsRef = firebase.firestore().collection('assignments');
     this.done = false;
     this.subgoals = [];
@@ -42,8 +41,7 @@
         text: "",
         due: "",
         id: "",
-        done: false,
-        tack: false
+        done: false
       }
       var newKey = subgoalsRef.doc().id;
       newSubgoal.id = newKey;
