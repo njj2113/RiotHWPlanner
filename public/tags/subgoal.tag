@@ -5,11 +5,8 @@
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div if={ subgoalText } class={ complete: item.done }>
-    <label for="subgoal">
-      { subgoalText }, due { subgoalDue }
-      <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
-    </label>
+  { subgoalText }, due { subgoalDue }
+  <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
   </div>
   <style>
     form, div {
