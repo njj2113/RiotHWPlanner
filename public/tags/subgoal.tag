@@ -1,5 +1,5 @@
 <subgoal>
-  <div class="evident">
+  <div class="demand">
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
@@ -18,10 +18,10 @@
       color: gray;
     }
 
-    .evident {
+    .demand {
+      background-color: red !important;
       height: 100px !important;
       width: 100px !important;
-      background-color: red !important;
     }
   </style>
   <script>
@@ -35,7 +35,6 @@
     this.saveSubgoal = function(event){
       this.subgoalText = this.refs.subgoalInput.value;
       this.subgoalDue = this.refs.subgoalDate.value;
-      //clicked = !clicked;
       subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue }, {merge: true});
     }
 
