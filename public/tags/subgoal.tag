@@ -1,11 +1,11 @@
 <subgoal>
-  <form if={ !subgoalText } class="subgoalEntry">
+  <form if={ !tack } class="subgoalEntry">
     <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
     <input type="text" ref="subgoalInput">
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div if={ subgoalText } class={ complete: item.done }>
+  <div if={ tack } class={ complete: item.done }>
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
@@ -33,7 +33,8 @@
     this.saveSubgoal = function(event){
       this.subgoalText = this.refs.subgoalInput.value;
       this.subgoalDue = this.refs.subgoalDate.value;
-      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue }, {merge: true});
+      this.subgoalTack = true;
+      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, tack: this.subgoalTack}, {merge: true});
     }
 
     this.removeSubgoal = function(event){

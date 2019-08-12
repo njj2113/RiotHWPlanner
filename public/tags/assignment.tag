@@ -41,7 +41,8 @@
         text: "",
         due: "",
         id: "",
-        done: false
+        done: false,
+        tack: false
       }
       var newKey = subgoalsRef.doc().id;
       newSubgoal.id = newKey;
