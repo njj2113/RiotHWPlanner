@@ -1,5 +1,11 @@
 <subgoal>
-  <div class="demand">
+  <form if={ !subgoalText } class="subgoalEntry">
+    <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
+    <input type="text" ref="subgoalInput">
+    <input type="date" ref="subgoalDate">
+    <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
+  </form>
+  <div if={ subgoalText } class={ complete: item.done }>
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
@@ -16,12 +22,6 @@
     .complete {
       text-decoration: line-through;
       color: gray;
-    }
-
-    .demand {
-      background-color: red !important;
-      height: 100px !important;
-      width: 100px !important;
     }
   </style>
   <script>

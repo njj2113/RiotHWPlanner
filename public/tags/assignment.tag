@@ -6,16 +6,7 @@
       <button type="button" name="addSubgoal" onclick={ addSubgoal } show={ !done }>+</button>
       <button type="button" name="removeAssignment" onclick={ removeAssignment }>x</button>
     </label>
-
-    <form class="subgoalEntry">
-      <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
-      <input type="text" ref="subgoalInput">
-      <input type="date" ref="subgoalDate">
-      <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
-    </form>
-
     <subgoal each={ item in subgoals }></subgoal>
-
   </div>
   <style>
     div {
