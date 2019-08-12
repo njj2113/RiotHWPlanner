@@ -1,11 +1,11 @@
 <subgoal>
-  <form if={ false } class="subgoalEntry">
+  <form class="subgoalEntry">
     <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
     <input type="text" ref="subgoalInput">
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div if={ false } class={ complete: item.done }>
+  <div class={ complete: item.done }>
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
