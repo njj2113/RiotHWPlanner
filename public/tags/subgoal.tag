@@ -3,18 +3,6 @@
   { subgoalText }, due { subgoalDue }
   <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
 
-  <style>
-    form, div {
-      margin-left: 3%;
-      font-size: 14px;
-      border: 0px !important;
-    }
-
-    .complete {
-      text-decoration: line-through;
-      color: gray;
-    }
-  </style>
   <script>
     var db = firebase.firestore();
     var assignmentsRef = db.collection('assignments');

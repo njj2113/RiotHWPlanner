@@ -16,7 +16,7 @@
       <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
     </form>
   </div>
-  
+
   <style>
     div {
       border-radius: 3px;
@@ -27,6 +27,12 @@
     .complete {
       text-decoration: line-through;
       color: gray;
+    }
+
+    form, div {
+      margin-left: 3%;
+      font-size: 14px;
+      border: 0px !important;
     }
   </style>
   <script>
