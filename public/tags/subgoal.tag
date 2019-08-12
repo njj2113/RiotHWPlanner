@@ -5,7 +5,7 @@
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div class="evident"> <!-- class={ complete: item.done } -->
+  <div class="evident">
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
@@ -25,12 +25,14 @@
     }
 
     .evident {
-      height: 100px;
-      width: 100px;
-      background-color: white;
+      height: 100px !important;
+      width: 100px !important;
+      background-color: red !important;
     }
   </style>
   <script>
+    this.subgoalText;
+    this.subgoalDue;
     var db = firebase.firestore();
     var assignmentsRef = db.collection('assignments');
     var subgoalsRef = assignmentsRef.doc(this.parent.item.id).collection('subgoals');
@@ -39,8 +41,7 @@
     this.saveSubgoal = function(event){
       this.subgoalText = this.refs.subgoalInput.value;
       this.subgoalDue = this.refs.subgoalDate.value;
-      this.subgoalTack = true;
-      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue, tack: this.subgoalTack }, {merge: false});
+      subgoalsRef.doc(currentSubgoal).set({ text: this.subgoalText, due: this.subgoalDue }, {merge: true});
     }
 
     this.removeSubgoal = function(event){
