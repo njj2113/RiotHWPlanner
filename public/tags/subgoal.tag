@@ -5,7 +5,7 @@
     <input type="date" ref="subgoalDate">
     <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
   </form>
-  <div class={ complete: item.done }>
+  <div class="evident"> <!-- class={ complete: item.done } -->
     <label for="subgoal">
       <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
@@ -22,6 +22,12 @@
     .complete {
       text-decoration: line-through;
       color: gray;
+    }
+
+    .evident {
+      height: 100px;
+      width: 100px;
+      background-color: white;
     }
   </style>
   <script>
