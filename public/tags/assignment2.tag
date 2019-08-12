@@ -6,18 +6,34 @@
       <button type="button" name="addSubgoal" onclick={ addSubgoal } show={ !done }>+</button>
       <button type="button" name="removeAssignment" onclick={ removeAssignment }>x</button>
     </label>
+
     <subgoal each={ item in subgoals }></subgoal>
+
+    <form>
+      <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
+      <input type="text" ref="subgoalInput">
+      <input type="date" ref="subgoalDate">
+      <button type="button" name="saveSubgoal" onclick={ saveSubgoal }>Save</button>
+    </form>
   </div>
+
   <style>
     div {
       border-radius: 3px;
       border: 1px solid gray;
       max-width: 75%;
+      margin-top: 10px;
     }
 
     .complete {
       text-decoration: line-through;
       color: gray;
+    }
+
+    form, div {
+      margin-left: 3%;
+      font-size: 14px;
+      border: 0px !important;
     }
   </style>
   <script>
@@ -58,6 +74,12 @@
         console.error("Error removing assignment: ", error);
       });
       this.unmount();
+    }
+
+    this.saveSubgoal = function(event){
+      this.subgoalText = this.refs.subgoalInput.value;
+      this.subgoalDue = this.refs.subgoalDate.value;
+      subgoalsRef.doc(this.item.id).set({ text: this.subgoalText, due: this.subgoalDue }, {merge: true});
     }
   </script>
 </assignment>
