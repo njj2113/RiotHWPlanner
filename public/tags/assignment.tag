@@ -22,6 +22,7 @@
       border-radius: 3px;
       border: 1px solid gray;
       max-width: 75%;
+      margin-top: 10px;
     }
 
     .complete {
