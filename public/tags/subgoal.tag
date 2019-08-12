@@ -7,7 +7,6 @@
   </form>
   <div if={ subgoalText } class={ complete: item.done }>
     <label for="subgoal">
-      <input type="checkbox" ref="subgoalItem" onchange={ parent.toggleCompletion }>
       { subgoalText }, due { subgoalDue }
       <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
     </label>
