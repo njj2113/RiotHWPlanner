@@ -1,6 +1,6 @@
 <subgoal>
 
-  { subgoalText }, due { subgoalDue }
+  <p>{ subgoalText }, due { subgoalDue }</p>
   <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
 
   <script>
