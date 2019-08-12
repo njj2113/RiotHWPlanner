@@ -25,8 +25,6 @@
     }
   </style>
   <script>
-    this.subgoalText;
-    this.subgoalDue;
     var db = firebase.firestore();
     var assignmentsRef = db.collection('assignments');
     var subgoalsRef = assignmentsRef.doc(this.parent.item.id).collection('subgoals');
