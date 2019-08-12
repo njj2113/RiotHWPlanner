@@ -9,7 +9,7 @@
 
     <subgoal each={ item in subgoals }></subgoal>
 
-    <form if={ !subgoalText } class="subgoalEntry">
+    <form>
       <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
       <input type="text" ref="subgoalInput">
       <input type="date" ref="subgoalDate">

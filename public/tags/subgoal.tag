@@ -1,7 +1,10 @@
 <subgoal>
-
-  <p>{ subgoalText }, due { subgoalDue }</p>
-  <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
+  <div>
+    <label for="subgoal">
+      { subgoalText }, due { subgoalDue }
+      <button type="button" name="removeSubgoal" onclick={ removeSubgoal }>x</button>
+    </label>
+  </div>
 
   <script>
     var db = firebase.firestore();
